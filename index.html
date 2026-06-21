@@ -1,34 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema Control Trasportadoras</title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-    <div class="login-container">
-  <h1>Ingreso al Sistema</h1>
-    <form>
-        <label>Usuario:</label><br>
-        <input type="text" id="usuario"><br><br>
-        <label>Contraseña:</label><br>
-        <input type="password" id="password"><br><br>
-        <button type="button" onclick="login()">Ingresar</button>
-    </form>
-    <p id="mesaje"></p>
-    <script>
-        function login(){
-            let usuario = document.getElementById("usuario").value;
-            let password = document.getElementById("pasword").value;
-            if (usuario === "admin" && password === "1234") {
-                window.location.href = "dashboard.html";
-            } else {
-                document.getElementById(mesaje).innerText = 
-                    "usuario o contraseña incorrecta"
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <div class="encabezado">
+      <div class="icono">
+        <img src="escudo.png.png" alt="Escudo Seguridad" />
+      </div>
+      <h2>Sistema Control Transportadoras</h2>
+      <br />
+      <div id="fechaHora"></div>
+      <p class="Centro-Comercial">Centro Comercial Jardin Plaza</p>
     </div>
-</body>
+    <div class="login-container">
+      <h1>Acceso Operadores</h1>
+      <form>
+        <label>Usuario:</label><br />
+        <input
+          type="text"
+          id="usuario"
+          placeholder="👤     Ingrese usuario"
+        /><br /><br />
+        <label>Contraseña:</label><br />
+        <input
+          type="password"
+          id="password"
+          placeholder="🔒     Ingrese contraseña"
+        /><br /><br />
+        <button type="button" onclick="login()">Ingresar</button>
+      </form>
+      <p id="mesaje"></p>
+      <script>
+        function login() {
+          let usuario = document.getElementById("usuario").value;
+          let password = document.getElementById("pasword").value;
+          if (usuario === "admin" && password === "1234") {
+            window.location.href = "dashboard.html";
+          } else {
+            document.getElementById("mensaje").innerText =
+              "usuario o contraseña incorrecta";
+          }
+        }
+      </script>
+    </div>
+    <footer>
+      <p>Version 1.0</p>
+      <p>© 2026 - Desarrollado por Luis Carlos Silva</p>
+    </footer>
+    <script>
+      function actualizarHora() {
+        const ahora = new Date();
+        document.getElementById("fechaHora").innerHTML =
+          ahora.toLocaleDateString("es-CO") +
+          "-" +
+          ahora.toLocaleTimeString("es-CO");
+      }
+      setInterval(actualizarHora, 1000);
+      actualizarHora();
+    </script>
+  </body>
 </html>
